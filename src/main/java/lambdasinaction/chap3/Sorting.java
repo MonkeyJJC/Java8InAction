@@ -40,6 +40,13 @@ public class Sorting {
         // 4
         // [Apple{color='red', weight=10}, Apple{color='red', weight=20}, Apple{color='green', weight=155}]
         inventory.sort(comparing(Apple::getWeight));
+        // 逆序
+        inventory.sort(comparing(Apple::getWeight).reversed());
+        // 比较器链
+        inventory.sort(comparing(Apple::getWeight)
+                .reversed()
+                .thenComparing(Apple::getColor)
+        );
         System.out.println(inventory);       
     }
 

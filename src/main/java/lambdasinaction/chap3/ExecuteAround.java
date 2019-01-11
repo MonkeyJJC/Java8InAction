@@ -11,6 +11,9 @@ public class ExecuteAround {
 
         System.out.println("---");
 
+        /**
+         * lambda表达式允许直接以内联的形式为函数式接口的抽象方法提供实现，并把整个表达式作为函数式接口的实例（即是函数式接口一个具体实现的实例）
+         */
 		String oneLine = processFile((BufferedReader b) -> b.readLine());
 		System.out.println(oneLine);
 
@@ -34,6 +37,9 @@ public class ExecuteAround {
 
 	}
 
+	/**
+	 * 函数式接口
+	 */
 	public interface BufferedReaderProcessor{
 		public String process(BufferedReader b) throws IOException;
 

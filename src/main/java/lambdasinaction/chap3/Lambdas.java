@@ -6,8 +6,19 @@ public class Lambdas {
 	public static void main(String ...args){
 
 		// Simple example
+        // lambda表达式的上下文是Runnable（目标类型），由于Runnable是一个函数式接口(函数描述符() -> void)，因此类型检查通过
 		Runnable r = () -> System.out.println("Hello!");
 		r.run();
+
+		// 匿名类可以完成同样的事情
+		Runnable r1 = new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("Hello");
+			}
+		};
+
+		r1.run();
 
 		// Filtering with lambdas
 		List<Apple> inventory = Arrays.asList(new Apple(80,"green"), new Apple(155, "green"), new Apple(120, "red"));
@@ -17,7 +28,8 @@ public class Lambdas {
 		System.out.println(greenApples);
 
 
-		Comparator<Apple> c = (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());
+//		Comparator<Apple> c = (Apple a1, Apple a2) -> a1.getWeight().compareTo(a2.getWeight());
+        Comparator<Apple> c = Comparator.comparing(Apple::getWeight);
 
 		// [Apple{color='green', weight=80}, Apple{color='red', weight=120}, Apple{color='green', weight=155}]
 		inventory.sort(c);
