@@ -16,6 +16,9 @@ public class Mapping{
                                      .collect(toList());
         System.out.println(dishNames);
 
+        // 多个map进行复合操作
+        List<Integer> dishNameLengths = menu.stream().map(Dish::getName).map(String::length).collect(toList());
+
         // map
         List<String> words = Arrays.asList("Hello", "World");
         List<Integer> wordLengths = words.stream()
@@ -29,6 +32,9 @@ public class Mapping{
                  .distinct()
                  .forEach(System.out::println);
 
+        /**
+         * flatMap的作用是使流扁平化，多个Stream合并为一个Stream
+         */
         // flatMap
         List<Integer> numbers1 = Arrays.asList(1,2,3,4,5);
         List<Integer> numbers2 = Arrays.asList(6,7,8);
